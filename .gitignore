@@ -1,3 +1,5 @@
-build/bin
+.idea/
+build/
+!build/appicon.png
 node_modules
 frontend/desktop/dist
