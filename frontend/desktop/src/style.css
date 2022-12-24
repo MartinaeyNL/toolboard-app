@@ -1,4 +1,11 @@
-html {
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    margin: 0;
+}
+/*html {
     background-color: rgba(27, 38, 54, 1);
     text-align: center;
     color: white;
@@ -10,8 +17,9 @@ body {
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-}
+}*/
 
+/*
 @font-face {
     font-family: "Nunito";
     font-style: normal;
@@ -24,3 +32,4 @@ body {
     height: 100vh;
     text-align: center;
 }
+*/
