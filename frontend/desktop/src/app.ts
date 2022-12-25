@@ -3,7 +3,9 @@ import {customElement} from 'lit/decorators.js'
 import {choose} from 'lit/directives/choose.js';
 import "./pages/page-dashboard";
 
+// @ts-ignore
 import shoelaceLightStyle from "@shoelace-style/shoelace/dist/themes/light.styles.js"
+// @ts-ignore
 import shoelaceDarkStyle from "@shoelace-style/shoelace/dist/themes/dark.styles.js";
 
 //language=css
