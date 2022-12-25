@@ -1,0 +1,13 @@
+{
+  "name": "toolboard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MartinaeyNL/toolboard-app",
+  "author": "MartinaeyNL <martinpeeters34@yahoo.nl>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend/components/*",
+    "frontend/desktop"
+  ]
+}

@@ -3,9 +3,9 @@
   "name": "toolboard",
   "outputfilename": "toolboard",
   "frontend:dir": "frontend/desktop",
-  "frontend:install": "npm install",
-  "frontend:build": "npm run build",
-  "frontend:dev:watcher": "npm run dev",
+  "frontend:install": "yarn install",
+  "frontend:build": "yarn workspaces run build",
+  "frontend:dev:watcher": "yarn workspaces run dev",
   "frontend:dev:serverUrl": "auto",
   "author": {
     "name": "MartinaeyNL",

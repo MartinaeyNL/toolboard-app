@@ -4,3 +4,5 @@ build/*
 node_modules
 frontend/desktop/dist
 *.md5
+*.tsbuildinfo
+lib/
