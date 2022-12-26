@@ -9,5 +9,6 @@
   "workspaces": [
     "frontend/components/*",
     "frontend/desktop"
-  ]
+  ],
+  "packageManager": "yarn@3.3.1"
 }

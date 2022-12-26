@@ -9,14 +9,14 @@
   },
   "types": "lib/index.d.ts",
   "scripts": {
-    "dev": "tsc",
+    "dev": "tsc-watch --noClear",
     "build": "tsc"
   },
   "dependencies": {
-    "@shoelace-style/shoelace": "^2.0.0-beta.87",
     "lit": "^2.2.8"
   },
   "devDependencies": {
+    "tsc-watch": "^6.0.0",
     "typescript": "^4.6.4"
   }
 }
