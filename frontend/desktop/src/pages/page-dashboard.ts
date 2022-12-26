@@ -3,9 +3,6 @@ import {customElement} from "lit/decorators.js";
 
 //language=css
 const styling = css`
-    :host {
-        background: green;
-    }
 `
 
 @customElement("page-dashboard")

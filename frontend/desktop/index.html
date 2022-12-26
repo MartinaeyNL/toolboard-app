@@ -6,9 +6,17 @@
     <title>toolboard</title>
     <link href="./src/style.css" rel="stylesheet">
     <script src="src/app.ts" type="module"></script>
+    <script src="src/header.ts" type="module"></script>
 </head>
 <body>
-    <toolboard-app></toolboard-app>
+    <div style="display: flex; flex-direction: column; width: 100%;">
+        <div id="header" style="height: 32px; --window-draggable: allow;">
+            <toolboard-appheader></toolboard-appheader>
+        </div>
+        <div id="content" style="flex: 1; --window-draggable: deny;">
+            <toolboard-app></toolboard-app>
+        </div>
+    </div>
 </body>
 </html>
 
