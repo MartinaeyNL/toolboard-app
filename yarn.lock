@@ -112,6 +112,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toolboard/tb-dashboard-browser@workspace:frontend/components/tb-dashboard-browser":
+  version: 0.0.0-use.local
+  resolution: "@toolboard/tb-dashboard-browser@workspace:frontend/components/tb-dashboard-browser"
+  dependencies:
+    lit: ^2.2.8
+    tsc-watch: ^6.0.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@toolboard/tb-menu@1.0.0, @toolboard/tb-menu@workspace:frontend/components/tb-menu":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-menu@workspace:frontend/components/tb-menu"

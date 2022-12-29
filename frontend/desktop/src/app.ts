@@ -1,8 +1,9 @@
 import {css, html, LitElement, PropertyValues} from 'lit'
 import {customElement} from 'lit/decorators.js'
 import {choose} from 'lit/directives/choose.js';
-import "./pages/page-dashboard";
+import './pages/page-dashboard';
 import '@toolboard/tb-menu';
+import '@toolboard/tb-dashboard-browser';
 
 // Import of all shoelace components
 import '@shoelace-style/shoelace';
@@ -41,9 +42,9 @@ export class App extends LitElement {
                         <div style="width: 80px; background: var(--sl-color-background-900)">
                             <tb-menu></tb-menu>
                         </div>
-                        <div style="flex: 1; background: var(--sl-color-background-800)">
+                        <div style="flex: 1; display: flex; background: var(--sl-color-background-800)">
                             ${choose(page, [
-                                ['dashboard', () => html`<page-dashboard></page-dashboard>`]
+                                ['dashboard', () => html`<page-dashboard style="flex: 1;"></page-dashboard>`]
                             ])}
                         </div>
                     </div>
