@@ -4,3 +4,13 @@ build/*
 node_modules
 frontend/desktop/dist
 *.md5
+*.tsbuildinfo
+lib/
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

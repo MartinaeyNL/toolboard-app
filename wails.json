@@ -2,11 +2,12 @@
   "$schema": "https://wails.io/schemas/config.v2.json",
   "name": "toolboard",
   "outputfilename": "toolboard",
-  "frontend:dir": "frontend/desktop",
-  "frontend:install": "npm install",
-  "frontend:build": "npm run build",
-  "frontend:dev:watcher": "npm run dev",
-  "frontend:dev:serverUrl": "auto",
+  "frontend:dir": "frontend",
+  "frontend:install": "yarn install",
+  "frontend:build": "yarn workspaces foreach -i -v run build",
+  "frontend:dev:watcher": "yarn workspaces foreach -i -v -p run dev",
+  "frontend:dev:serverUrl": "http://localhost:5173",
+  "wailsjsdir": "frontend/desktop",
   "author": {
     "name": "MartinaeyNL",
     "email": "business@martinaey.nl"
