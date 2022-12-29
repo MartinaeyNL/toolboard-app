@@ -3,7 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/tkrajina/typescriptify-golang-structs/typescriptify"
 	"toolboard/backend/api"
+	"toolboard/backend/models"
 )
 
 // App struct
@@ -20,6 +22,20 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+
+	// Logic for converting Go structs to TypeScript
+	fmt.Println("Compiling Go Structs to TypeScript..")
+	tsConverter := typescriptify.New()
+	tsConverter.BackupDir = "" // to prevent backup creation
+	tsConverter.
+		Add(models.Dashboard{}).WithInterface(true)
+
+	tsErr := tsConverter.ConvertToFile("frontend/components/tb-utils/src/models.ts")
+	if tsErr != nil {
+		panic(tsErr.Error())
+	}
+
+	fmt.Println("Starting the Backend Server..")
 	api.Run()
 }
 

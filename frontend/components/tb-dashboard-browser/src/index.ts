@@ -4,6 +4,7 @@ import {classMap} from 'lit/directives/class-map.js';
 import {map} from 'lit/directives/map.js';
 import {when} from 'lit/directives/when.js';
 import { globalStyle } from "./style";
+import {Dashboard} from "@toolboard/tb-utils/lib/models";
 
 //language=css
 const styling = css`
@@ -39,21 +40,20 @@ export class TbDashboardBrowser extends LitElement {
     static styles = [styling, globalStyle];
 
     @property()
-    public dashboards: string[];
+    public dashboards: Dashboard[];
 
     @state()
-    private selectedDashboard?: string;
+    private selectedDashboard?: Dashboard;
 
     constructor() {
         super();
         this.dashboards = [
-            "Dashboard 1",
-            "Dashboard 2",
-            "Dashboard 3"
+            { Id: "rhuigaheguige", DisplayName: "Dashboard 1", Description: "The first dashboard on the list", Version: 2},
+            { Id: "ewjkstpgjtip", DisplayName: "Dashboard 2", Description: "Another dashboard to play with", Version: 3}
         ]
     }
 
-    protected selectDashboard(dashboard: string) {
+    protected selectDashboard(dashboard: Dashboard) {
         this.selectedDashboard = (this.selectedDashboard == dashboard ? undefined : dashboard);
     }
 
@@ -74,8 +74,8 @@ export class TbDashboardBrowser extends LitElement {
                                     <div class="container" style="flex: 1; padding: 0;">
                                         ${map(this.dashboards, (dashboard) => {
                                             const itemClassMap = {
-                                                "item-area": this.selectedDashboard != dashboard,
-                                                "item-area--selected": this.selectedDashboard == dashboard
+                                                "item-area": this.selectedDashboard?.Id != dashboard.Id,
+                                                "item-area--selected": this.selectedDashboard?.Id == dashboard.Id
                                             }
                                             return html`
                                                 <div class="${classMap(itemClassMap)}" @click="${() => this.selectDashboard(dashboard)}" style="width: 100%;">
@@ -85,7 +85,7 @@ export class TbDashboardBrowser extends LitElement {
                                                         </div>
                                                         <div class="container" style="align-items: start; gap: 6px; padding: 0; flex: 1;">
                                                             <div class="container" style="flex-direction: row; justify-content: space-between; width: 100%; padding: 0;">
-                                                                <span style="font-size: var(--sl-font-size-large)">${dashboard}</span>
+                                                                <span style="font-size: var(--sl-font-size-large)">${dashboard.DisplayName}</span>
                                                                 <div style="opacity: 0.8;">
                                                                     <sl-badge variant="primary">Primary</sl-badge>
                                                                     <sl-badge variant="success">Util</sl-badge>
@@ -114,10 +114,10 @@ export class TbDashboardBrowser extends LitElement {
                                             <div class="container" style="flex: 1; height: 100%; gap: 24px; background: var(--sl-color-background-700);">
                                                 <span style="width: 100%; aspect-ratio: 16/9; background: gold;"></span>
                                                 <div>
-                                                    <span style="font-size: var(--sl-font-size-x-large);">${this.selectedDashboard}</span>
+                                                    <span style="font-size: var(--sl-font-size-x-large);">${this.selectedDashboard?.DisplayName}</span>
                                                 </div>
                                                 <div class="container" style="flex: 1; padding: 0; justify-content: space-between; width: 100%;">
-                                                    <span>Preview</span>
+                                                    <span>${this.selectedDashboard?.Description}</span>
                                                     <!-- Actions -->
                                                     <div class="container" style="padding: 0; width: 100%; flex-direction: row; justify-content: end;">
                                                         <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>

@@ -1,5 +1,5 @@
 {
-  "name": "@toolboard/tb-dashboard-browser",
+  "name": "@toolboard/tb-utils",
   "version": "1.0.0",
   "main": "dist/umd/index.bundle.js",
   "module": "lib/index.js",
@@ -11,10 +11,6 @@
   "scripts": {
     "dev": "tsc-watch --noClear",
     "build": "tsc"
-  },
-  "dependencies": {
-    "@toolboard/tb-utils": "^1.0.0",
-    "lit": "^2.2.8"
   },
   "devDependencies": {
     "tsc-watch": "^6.0.0",

@@ -12,19 +12,11 @@ func Run() {
 
 	// Create a new Gin router
 	router := gin.New()
-
 	getRoutes(router)
 
-	// Add a route to the router
-	/*router.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})*/
-
 	// Run the router
-	err := router.Run()
-	if err != nil {
+	runErr := router.Run()
+	if runErr != nil {
 		return
 	}
 }
