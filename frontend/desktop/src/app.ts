@@ -6,7 +6,6 @@ import {MenuOption} from "@toolboard/tb-menu";
 import './pages/page-dashboard';
 import './pages/page-widgets';
 import './pages/page-settings';
-import '@toolboard/tb-dashboard-browser';
 
 // Import of all shoelace components
 import '@shoelace-style/shoelace';

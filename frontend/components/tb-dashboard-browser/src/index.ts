@@ -31,6 +31,15 @@ const styling = css`
         transform: translateX(-3px);
         left: 65%;
     }
+
+    #delete-btn sl-icon-button::part(base):hover,
+    #delete-btn sl-icon-button::part(base):focus {
+        color: var(--sl-color-danger-500);
+    }
+
+    #delete-btn sl-icon-button::part(base):active {
+        color: var(--sl-color-danger-300);
+    }
 `;
 
 @customElement("tb-dashboard-browser")
@@ -117,10 +126,22 @@ export class TbDashboardBrowser extends LitElement {
                                                 </div>
                                                 <div class="container" style="flex: 1; padding: 0; justify-content: space-between; width: 100%;">
                                                     <span>${this.selectedDashboard?.Description}</span>
-                                                    <!-- Actions -->
-                                                    <div class="container" style="padding: 0; width: 100%; flex-direction: row; justify-content: end;">
-                                                        <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
-                                                        <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
+                                                    <div class="container" style="padding: 0; width: 100%; display: flex;">
+                                                        <div style="width: 100%;">
+                                                            <div class="container" style="flex-direction: row;">
+                                                                <sl-button variant="default" size="medium" style="width: 100%;">Edit</sl-button>
+                                                                <sl-button variant="default" size="medium" style="width: 100%;">Open</sl-button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container" style="padding: 0; width: 100%; flex-direction: row; justify-content: space-between;">
+                                                            <div id="delete-btn">
+                                                                <sl-icon-button name="trash" label="Delete" style="font-size: 1.5rem;"></sl-icon-button>
+                                                            </div>
+                                                            <div>
+                                                                <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
+                                                                <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
