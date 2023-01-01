@@ -116,27 +116,52 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-browser@workspace:frontend/components/tb-dashboard-browser"
   dependencies:
+    "@toolboard/tb-utils": ^1.0.0
     lit: ^2.2.8
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
-"@toolboard/tb-menu@1.0.0, @toolboard/tb-menu@workspace:frontend/components/tb-menu":
+"@toolboard/tb-dashboard-preview@workspace:frontend/components/tb-dashboard-preview":
+  version: 0.0.0-use.local
+  resolution: "@toolboard/tb-dashboard-preview@workspace:frontend/components/tb-dashboard-preview"
+  dependencies:
+    "@toolboard/tb-utils": ^1.0.0
+    gridstack: ^7.1.2
+    lit: ^2.2.8
+    tsc-watch: ^6.0.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
+"@toolboard/tb-grid@workspace:frontend/components/tb-grid":
+  version: 0.0.0-use.local
+  resolution: "@toolboard/tb-grid@workspace:frontend/components/tb-grid"
+  dependencies:
+    "@toolboard/tb-utils": ^1.0.0
+    gridstack: ^7.1.2
+    lit: ^2.2.8
+    tsc-watch: ^6.0.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
+"@toolboard/tb-menu@workspace:frontend/components/tb-menu":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-menu@workspace:frontend/components/tb-menu"
   dependencies:
+    "@toolboard/tb-utils": 1.0.0
     lit: ^2.2.8
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
-"@toolboard/tb-utils@workspace:frontend/components/tb-utils":
+"@toolboard/tb-utils@1.0.0, @toolboard/tb-utils@^1.0.0, @toolboard/tb-utils@workspace:frontend/components/tb-utils":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-utils@workspace:frontend/components/tb-utils"
   dependencies:
-    lit: ^2.2.8
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
   languageName: unknown
@@ -624,7 +649,7 @@ __metadata:
   resolution: "frontend@workspace:frontend/desktop"
   dependencies:
     "@shoelace-style/shoelace": ^2.0.0-beta.87
-    "@toolboard/tb-menu": 1.0.0
+    "@toolboard/tb-utils": 1.0.0
     lit: ^2.2.8
     typescript: ^4.6.4
     vite: ^3.0.7
@@ -720,6 +745,13 @@ __metadata:
   version: 4.2.10
   resolution: "graceful-fs@npm:4.2.10"
   checksum: 3f109d70ae123951905d85032ebeae3c2a5a7a997430df00ea30df0e3a6c60cf6689b109654d6fdacd28810a053348c4d14642da1d075049e6be1ba5216218da
+  languageName: node
+  linkType: hard
+
+"gridstack@npm:^7.1.2":
+  version: 7.1.2
+  resolution: "gridstack@npm:7.1.2"
+  checksum: 3457b64f877dff24206182364992a133f3830dc0178b9cb7a6f6c290f4d6551d1790e614b25c77c08d0cc990d3a9d2f28506a06a349b5bb1cdd9fc69127318f2
   languageName: node
   linkType: hard
 

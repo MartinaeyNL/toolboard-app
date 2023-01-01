@@ -4,7 +4,7 @@
   "outputfilename": "toolboard",
   "frontend:dir": "frontend",
   "frontend:install": "yarn install",
-  "frontend:build": "yarn workspaces foreach -i -v run build",
+  "frontend:build": "go run ./../util/tsCompiler.go && yarn workspaces foreach -i -v run build",
   "frontend:dev:watcher": "yarn workspaces foreach -i -v -p run dev",
   "frontend:dev:serverUrl": "http://localhost:5173",
   "wailsjsdir": "frontend/desktop",
@@ -12,7 +12,7 @@
     "name": "MartinaeyNL",
     "email": "business@martinaey.nl"
   },
-  "Info": {
+  "info": {
     "companyName": "Toolboard",
     "productName": "Toolboard",
     "productVersion": "1.0.0",

@@ -1,10 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement, property, state} from "lit/decorators.js";
 import {classMap} from 'lit/directives/class-map.js';
 import {map} from 'lit/directives/map.js';
 import {when} from 'lit/directives/when.js';
-import { globalStyle } from "./style";
-import {Dashboard} from "@toolboard/tb-utils/lib/models";
+import {globalStyle, Dashboard} from "@toolboard/tb-utils";
 
 //language=css
 const styling = css`
@@ -32,6 +31,15 @@ const styling = css`
         transform: translateX(-3px);
         left: 65%;
     }
+
+    #delete-btn sl-icon-button::part(base):hover,
+    #delete-btn sl-icon-button::part(base):focus {
+        color: var(--sl-color-danger-500);
+    }
+
+    #delete-btn sl-icon-button::part(base):active {
+        color: var(--sl-color-danger-300);
+    }
 `;
 
 @customElement("tb-dashboard-browser")
@@ -48,13 +56,20 @@ export class TbDashboardBrowser extends LitElement {
     constructor() {
         super();
         this.dashboards = [
-            { Id: "rhuigaheguige", DisplayName: "Dashboard 1", Description: "The first dashboard on the list", Version: 2},
-            { Id: "ewjkstpgjtip", DisplayName: "Dashboard 2", Description: "Another dashboard to play with", Version: 3}
+            { id: "rhuigaheguige", displayName: "Dashboard 1", description: "The first dashboard on the list", version: 2},
+            { id: "ewjkstpgjtip", displayName: "Dashboard 2", description: "Another dashboard to play with", version: 3}
         ]
     }
 
     protected selectDashboard(dashboard: Dashboard) {
         this.selectedDashboard = (this.selectedDashboard == dashboard ? undefined : dashboard);
+    }
+
+    protected updated(_changedProperties: PropertyValues) {
+        super.updated(_changedProperties);
+        if(_changedProperties.has("selectedDashboard")) {
+            this.dispatchEvent(new CustomEvent("select", { detail: { value: this.selectedDashboard }}))
+        }
     }
 
 
@@ -74,8 +89,8 @@ export class TbDashboardBrowser extends LitElement {
                                     <div class="container" style="flex: 1; padding: 0;">
                                         ${map(this.dashboards, (dashboard) => {
                                             const itemClassMap = {
-                                                "item-area": this.selectedDashboard?.Id != dashboard.Id,
-                                                "item-area--selected": this.selectedDashboard?.Id == dashboard.Id
+                                                "item-area": this.selectedDashboard?.id != dashboard.id,
+                                                "item-area--selected": this.selectedDashboard?.id == dashboard.id
                                             }
                                             return html`
                                                 <div class="${classMap(itemClassMap)}" @click="${() => this.selectDashboard(dashboard)}" style="width: 100%;">
@@ -85,7 +100,7 @@ export class TbDashboardBrowser extends LitElement {
                                                         </div>
                                                         <div class="container" style="align-items: start; gap: 6px; padding: 0; flex: 1;">
                                                             <div class="container" style="flex-direction: row; justify-content: space-between; width: 100%; padding: 0;">
-                                                                <span style="font-size: var(--sl-font-size-large)">${dashboard.DisplayName}</span>
+                                                                <span style="font-size: var(--sl-font-size-large)">${dashboard.displayName}</span>
                                                                 <div style="opacity: 0.8;">
                                                                     <sl-badge variant="primary">Primary</sl-badge>
                                                                     <sl-badge variant="success">Util</sl-badge>
@@ -114,14 +129,30 @@ export class TbDashboardBrowser extends LitElement {
                                             <div class="container" style="flex: 1; height: 100%; gap: 24px; background: var(--sl-color-background-700);">
                                                 <span style="width: 100%; aspect-ratio: 16/9; background: gold;"></span>
                                                 <div>
-                                                    <span style="font-size: var(--sl-font-size-x-large);">${this.selectedDashboard?.DisplayName}</span>
+                                                    <span style="font-size: var(--sl-font-size-x-large);">${this.selectedDashboard?.displayName}</span>
                                                 </div>
                                                 <div class="container" style="flex: 1; padding: 0; justify-content: space-between; width: 100%;">
-                                                    <span>${this.selectedDashboard?.Description}</span>
-                                                    <!-- Actions -->
-                                                    <div class="container" style="padding: 0; width: 100%; flex-direction: row; justify-content: end;">
-                                                        <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
-                                                        <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
+                                                    <span>${this.selectedDashboard?.description}</span>
+                                                    <div class="container" style="padding: 0; width: 100%; display: flex;">
+                                                        <div style="width: 100%;">
+                                                            <div class="container" style="flex-direction: row;">
+                                                                <sl-button variant="default" size="medium" style="width: 100%;" @click="${() => {
+                                                                    this.dispatchEvent(new CustomEvent("onedit"))
+                                                                }}">Edit</sl-button>
+                                                                <sl-button variant="default" size="medium" style="width: 100%;" @click="${() => {
+                                                                    this.dispatchEvent(new CustomEvent("onview"))
+                                                                }}">Open</sl-button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container" style="padding: 0; width: 100%; flex-direction: row; justify-content: space-between;">
+                                                            <div id="delete-btn">
+                                                                <sl-icon-button name="trash" label="Delete" style="font-size: 1.5rem;"></sl-icon-button>
+                                                            </div>
+                                                            <div>
+                                                                <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
+                                                                <sl-icon-button name="pencil" label="Edit" style="font-size: 1.5rem;"></sl-icon-button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
