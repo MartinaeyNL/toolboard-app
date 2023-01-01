@@ -21,7 +21,7 @@ export class TbGrid extends LitElement {
     public widgetProvider?: Promise<DashboardWidget[]>;
 
     @property()
-    public loading: boolean;
+    public loading: boolean = false;
 
     @property()
     public float?: boolean;
@@ -50,21 +50,22 @@ export class TbGrid extends LitElement {
     }
 
     protected updated(_changedProperties: PropertyValues) {
+        console.log(_changedProperties);
         super.updated(_changedProperties);
 
-        if (!this.grid) {
-            console.log("Attempting to load grid..")
-            const element = this.shadowRoot!.getElementById('grid');
-            if (element != null) {
-                this.loadGrid(element, false);
-            }
+        if(!this.grid) {
+            this.loadGrid(undefined, false);
         }
     }
 
     /* -------------------- */
 
-    protected loadGrid(element: HTMLElement, replace: boolean) {
-        if(replace || !this.grid) {
+    protected loadGrid(element?: HTMLElement | null, replace: boolean = false) {
+        console.log("Attempting to load Grid!");
+        if(!element) {
+            element = this.shadowRoot?.getElementById('grid');
+        }
+        if(element && (!this.grid || replace)) {
             const options: GridStackOptions = {
                 float: this.float,
                 margin: 6
@@ -78,6 +79,7 @@ export class TbGrid extends LitElement {
     /* -------------- */
 
     render(): TemplateResult {
+        console.log("Rendering tb-grid!");
         return html`
             <div style="height: 100%; display: flex; overflow-y: scroll;">
                 ${when(this.widgets, () => {
@@ -85,12 +87,12 @@ export class TbGrid extends LitElement {
                         <div id="grid" style="flex: 1;">
                             ${map(this.widgets, (widget) => {
                                 return html`
-                                    <div class="grid-stack-item" gs-x="${widget.Location.X}" gs-y="${widget.Location.Y}"
-                                         gs-w="${widget.Location.Width}" gs-h="${widget.Location.Height}">
+                                    <div class="grid-stack-item" gs-x="${widget.location.x}" gs-y="${widget.location.y}"
+                                         gs-w="${widget.location.width}" gs-h="${widget.location.height}">
                                         <div class="grid-stack-item-content"
                                              style="background: var(--sl-color-background-500)">
-                                            ${when(widget.Widget.HTMLContent,
-                                                    () => unsafeHTML(widget.Widget.HTMLContent),
+                                            ${when(widget.widget.htmlContent,
+                                                    () => unsafeHTML(widget.widget.htmlContent),
                                                     () => html`<span>No Content.</span>`
                                             )}
                                         </div>

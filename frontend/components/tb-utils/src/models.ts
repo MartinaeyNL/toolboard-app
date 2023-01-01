@@ -2,34 +2,36 @@
 
 
 export interface DashboardWidgetLocation {
-    Id: string;
-    X: number;
-    Y: number;
-    Width: number;
-    MinWidth: number;
-    MaxWidth: number;
-    Height: number;
-    MinHeight: number;
-    MaxHeight: number;
+    id: string;
+    x: number;
+    y: number;
+    width: number;
+    minWidth?: number;
+    MaxWidth?: number;
+    height: number;
+    minHeight?: number;
+    maxHeight?: number;
 }
 export interface Widget {
-    Id: string;
-    DisplayName: string;
-    Author: string;
-    HTMLContent: string;
+    id: string;
+    displayName: string;
+    author: string;
+    htmlContent: string;
 }
 export interface DashboardWidget {
-    Id: string;
-    Version: number;
-    DisplayName: string;
-    Description: string;
-    Widget: Widget;
-    Location: DashboardWidgetLocation;
+    id: string;
+    version: number;
+    displayName: string;
+    description?: string;
+    widget: Widget;
+    location: DashboardWidgetLocation;
 }
 export interface Dashboard {
-    Id: string;
-    Version: number;
-    DisplayName: string;
-    Description: string;
-    Widgets: DashboardWidget[];
+    id: string;
+    version: number;
+    displayName: string;
+    description?: string;
+    widgets?: DashboardWidget[];
 }
+
+

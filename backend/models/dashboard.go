@@ -1,30 +1,30 @@
 package models
 
 type Dashboard struct {
-	Id          string
-	Version     int64
-	DisplayName string
-	Description string
-	Widgets     []DashboardWidget
+	Id          string             `json:"id"`
+	Version     int64              `json:"version"`
+	DisplayName string             `json:"displayName"`
+	Description *string            `json:"description"`
+	Widgets     *[]DashboardWidget `json:"widgets"`
 }
 
 type DashboardWidget struct {
-	Id          string
-	Version     int64
-	DisplayName string
-	Description string
-	Widget      Widget
-	Location    DashboardWidgetLocation
+	Id          string                  `json:"id"`
+	Version     int64                   `json:"version"`
+	DisplayName string                  `json:"displayName"`
+	Description *string                 `json:"description"`
+	Widget      Widget                  `json:"widget"`
+	Location    DashboardWidgetLocation `json:"location"`
 }
 
 type DashboardWidgetLocation struct {
-	Id        string
-	X         int
-	Y         int
-	Width     int
-	MinWidth  int
-	MaxWidth  int
-	Height    int
-	MinHeight int
-	MaxHeight int
+	Id        string `json:"id"`
+	X         int    `json:"x"`
+	Y         int    `json:"y"`
+	Width     int    `json:"width"`
+	MinWidth  *int   `json:"minWidth"`
+	MaxWidth  *int   `json:"MaxWidth"`
+	Height    int    `json:"height"`
+	MinHeight *int   `json:"minHeight"`
+	MaxHeight *int   `json:"maxHeight"`
 }
