@@ -5,7 +5,8 @@
   "frontend:dir": "frontend",
   "frontend:install": "yarn install",
   "frontend:build": "go run ./../util/tsCompiler.go && yarn workspaces foreach -i -v run build",
-  "frontend:dev:watcher": "yarn workspaces foreach -i -v -p run dev",
+  "frontend:dev:build": "go run ./../util/tsCompiler.go",
+  "frontend:dev:watcher": "yarn workspaces foreach -i -v -p -j unlimited run dev",
   "frontend:dev:serverUrl": "http://localhost:5173",
   "wailsjsdir": "frontend/desktop",
   "author": {
