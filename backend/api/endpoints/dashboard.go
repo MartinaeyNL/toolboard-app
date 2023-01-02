@@ -14,6 +14,6 @@ func GetDashboard(ctx *gin.Context) {
 func PostDashboard(ctx *gin.Context) {
 	fmt.Println(ctx.Request.Body)
 	ctx.JSON(200, gin.H{
-		"anotherdashboard": "testtwo",
+		"anotherdashboard": "testtwo2",
 	})
 }
