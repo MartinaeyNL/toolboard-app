@@ -4,8 +4,23 @@ import (
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"toolboard/backend/api/endpoints"
+	_ "toolboard/docs"
 )
+
+//	@title			Toolboard API
+//	@version		1.0
+
+//	@contact.name	Toolboard GitHub
+//	@contact.url	https://github.com/MartinaeyNL/toolboard-app
+
+//	@license.name	Apache 2.0
+//	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
+
+//	@host		localhost:8080
+//	@BasePath	/api/v1
 
 func Run() {
 
@@ -29,13 +44,25 @@ func Run() {
 }
 
 func getRoutes(router *gin.Engine) []*gin.RouterGroup {
-	dashboardRoutes := router.Group("/dashboard")
+
+	apiRoutes := router.Group("/api/v1")
 	{
-		dashboardRoutes.GET("", endpoints.GetDashboard)
-		dashboardRoutes.POST("", endpoints.PostDashboard)
+		dashboardRoutes := apiRoutes.Group("/dashboard")
+		{
+			dashboardRoutes.GET("", endpoints.GetDashboard)
+			dashboardRoutes.POST("", endpoints.PostDashboard)
+		}
+		userRoutes := apiRoutes.Group("/user")
+		{
+			userRoutes.GET("", nil)
+		}
 	}
-	userRoutes := router.Group("/user")
+
+	swaggerRoutes := router.Group("/swagger")
+	{
+		swaggerRoutes.GET("/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	}
 
 	var routerGroup []*gin.RouterGroup
-	return append(routerGroup, dashboardRoutes, userRoutes)
+	return append(routerGroup, apiRoutes, swaggerRoutes)
 }
