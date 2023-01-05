@@ -1,6 +1,6 @@
 .idea/
-build/*
-!build/appicon.png
+build/bin
+build/windows/installer
 node_modules
 frontend/desktop/dist
 *.md5

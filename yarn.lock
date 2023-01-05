@@ -123,6 +123,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform":
+  version: 0.0.0-use.local
+  resolution: "@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform"
+  dependencies:
+    "@toolboard/tb-utils": ^1.0.0
+    lit: ^2.2.8
+    tsc-watch: ^6.0.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@toolboard/tb-dashboard-preview@workspace:frontend/components/tb-dashboard-preview":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-preview@workspace:frontend/components/tb-dashboard-preview"

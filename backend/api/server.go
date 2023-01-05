@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"toolboard/backend/api/endpoints"
 )
@@ -13,6 +14,12 @@ func Run() {
 	// Create a new Gin router
 	router := gin.New()
 	getRoutes(router)
+
+	router.Use(cors.New(cors.Config{
+		AllowAllOrigins:  true,
+		AllowHeaders:     []string{"Content-Type", "Content-Length", "accept", "origin"},
+		AllowCredentials: false,
+	}))
 
 	// Run the router
 	runErr := router.Run()

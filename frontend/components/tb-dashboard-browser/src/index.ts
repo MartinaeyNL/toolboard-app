@@ -4,6 +4,7 @@ import {classMap} from 'lit/directives/class-map.js';
 import {map} from 'lit/directives/map.js';
 import {when} from 'lit/directives/when.js';
 import {globalStyle, Dashboard} from "@toolboard/tb-utils";
+import "@toolboard/tb-dashboard-createform";
 
 //language=css
 const styling = css`
@@ -56,8 +57,8 @@ export class TbDashboardBrowser extends LitElement {
     constructor() {
         super();
         this.dashboards = [
-            { id: "rhuigaheguige", displayName: "Dashboard 1", description: "The first dashboard on the list", version: 2},
-            { id: "ewjkstpgjtip", displayName: "Dashboard 2", description: "Another dashboard to play with", version: 3}
+            { id: 1, createdAt: Date.now(), updatedAt: Date.now(), deletedAt: { Time: Date.now(), Valid: false }, displayName: "Dashboard 1", description: "The first dashboard on the list" },
+            { id: 2, createdAt: Date.now(), updatedAt: Date.now(), deletedAt: { Time: Date.now(), Valid: false }, displayName: "Dashboard 2", description: "Another dashboard to play with" }
         ]
     }
 
@@ -78,8 +79,15 @@ export class TbDashboardBrowser extends LitElement {
             <div id="top_container" style="height: 100%;">
                 <div style="display: flex; height: 100%;">
                     <div class="container" style="flex: 1; align-items: start; gap: 24px;">
-                        <div id="container-title">
-                            <span style="font-size: var(--sl-font-size-x-large)">Browse Dashboards</span>
+                        <div style="display: flex; justify-content: space-between; width: 100%;">
+                            <div id="container-title">
+                                <span style="font-size: var(--sl-font-size-x-large)">Browse Dashboards</span>
+                            </div>
+                            <div class="container" style="padding: 0; flex-direction: row;">
+                                <div>
+                                    <tb-dashboard-createform></tb-dashboard-createform>
+                                </div>
+                            </div>
                         </div>
                         <div style="flex: 1; width: 100%; position: relative;">
                             <sl-split-panel position="65" snap="65%" style="height: 100%; padding: 0;">

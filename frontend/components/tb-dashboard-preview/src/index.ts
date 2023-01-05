@@ -31,18 +31,38 @@ export class TbDashboardPreview extends LitElement {
         super();
         this.widgetProvider = async (): Promise<DashboardWidget[]> => {
             return [{
-                id: "egwagoewjhgg",
-                version: 1,
+                id: 1,
+                createdAt: Date.now(),
+                updatedAt: Date.now(),
+                deletedAt: {
+                    Time: Date.now(),
+                    Valid: false
+                },
+                dashboardId: 1,
+                WidgetId: 1,
+                LocationId: 1,
                 displayName: "Widget 1",
                 location: {
-                    id: "eygawhreshbwreabhsjdehbw",
+                    id: 1,
+                    createdAt: Date.now(),
+                    updatedAt: Date.now(),
+                    deletedAt: {
+                        Time: Date.now(),
+                        Valid: false
+                    },
                     x: 2,
                     y: 2,
                     width: 5,
                     height: 3
                 },
                 widget: {
-                    id: "ejogywpgwgag",
+                    id: 1,
+                    createdAt: Date.now(),
+                    updatedAt: Date.now(),
+                    deletedAt: {
+                        Time: Date.now(),
+                        Valid: false
+                    },
                     displayName: "Special Widget created by MartinaeyNL",
                     author: "MartinaeyNL",
                     htmlContent: "<span>Text of the Custom Widget 1 widget. Right?</span>"
