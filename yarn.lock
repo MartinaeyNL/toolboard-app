@@ -128,7 +128,7 @@ __metadata:
   resolution: "@toolboard/tb-dashboard-preview@workspace:frontend/components/tb-dashboard-preview"
   dependencies:
     "@toolboard/tb-utils": ^1.0.0
-    gridstack: ^7.1.2
+    gridstack: ^7.2.0
     lit: ^2.2.8
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -140,7 +140,7 @@ __metadata:
   resolution: "@toolboard/tb-grid@workspace:frontend/components/tb-grid"
   dependencies:
     "@toolboard/tb-utils": ^1.0.0
-    gridstack: ^7.1.2
+    gridstack: ^7.2.0
     lit: ^2.2.8
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -748,10 +748,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gridstack@npm:^7.1.2":
-  version: 7.1.2
-  resolution: "gridstack@npm:7.1.2"
-  checksum: 3457b64f877dff24206182364992a133f3830dc0178b9cb7a6f6c290f4d6551d1790e614b25c77c08d0cc990d3a9d2f28506a06a349b5bb1cdd9fc69127318f2
+"gridstack@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "gridstack@npm:7.2.0"
+  checksum: 695183f0e1aa1610990466b8df95ace8e014cb0f1f50b94aa38d445665cc9224707de280941242685f80ccdba43be6395afd72b005b13d7e150791e9ada83434
   languageName: node
   linkType: hard
 

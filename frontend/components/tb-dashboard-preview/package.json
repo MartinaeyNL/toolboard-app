@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@toolboard/tb-utils": "^1.0.0",
-    "gridstack": "^7.1.2",
+    "gridstack": "^7.2.0",
     "lit": "^2.2.8"
   },
   "devDependencies": {
