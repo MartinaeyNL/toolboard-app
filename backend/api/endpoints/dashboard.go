@@ -7,32 +7,38 @@ import (
 	"toolboard/backend/models"
 )
 
-// GetDashboard godoc
+// GetAllDashboards backend
 //
-//	@Summary		Get a single dashboard
-//	@Description	Returns a simple json object for testing
+//	@Summary		Get all dashboards
+//	@Description	Returns one json object with all dashboards in the database
 //	@Tags			dashboard
 //	@Accept			json
 //	@Produce		json
-//	@Success		200	{string}	string	"pong"
+//	@Success		200	{object}	[]models.Dashboard
 //	@Failure		500	{string}	string	"ok"
-//	@Router			/dashboard [get]
-func GetDashboard(ctx *gin.Context) {
-	ctx.JSON(200, gin.H{
-		"dashboard": "test",
-	})
+//	@Router			/dashboard/all [get]
+func GetAllDashboards(ctx *gin.Context) {
+	entities, dbErr := database.GetAllEntities([]models.Dashboard{})
+	if dbErr != nil {
+		fmt.Println(dbErr.Error())
+		ctx.AbortWithStatus(500)
+		return
+	}
+	ctx.JSON(200, entities)
 }
 
-// PostDashboard godoc
+// PostDashboard backend
 //
 //	@Summary		Create a new Dashboard
 //	@Description	Stores the body dashboard object as a new entry in the database
+//	@ID				post-dashboard
 //	@Tags			dashboard
 //	@Accept			json
 //	@Produce		json
-//	@Success		201	{string}	string	"pong"
-//	@Failure		400	{string}	string	"ok"
-//	@Failure		500	{string}	string	"ok"
+//	@Param			dashboard body		models.Dashboard	true		"The dashboard to create"
+//	@Success		201	{object}		models.Dashboard
+//	@Failure		400	{string}		string				"ok"
+//	@Failure		500	{string}		string				"ok"
 //	@Router			/dashboard [post]
 func PostDashboard(ctx *gin.Context) {
 

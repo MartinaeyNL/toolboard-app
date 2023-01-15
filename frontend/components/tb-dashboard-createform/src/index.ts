@@ -1,6 +1,7 @@
-import {html, LitElement, PropertyValues, TemplateResult} from "lit";
+import {html, LitElement, TemplateResult} from "lit";
 import {customElement, query, state} from "lit/decorators.js";
-import {createNewDashboard, Dashboard, globalStyle} from "@toolboard/tb-utils";
+import {Dashboard, globalStyle} from "@toolboard/tb-utils";
+import {ToolboardClient} from "@toolboard/tb-api";
 
 @customElement("tb-dashboard-createform")
 export class TbDashboardCreateForm extends LitElement {
@@ -43,11 +44,10 @@ export class TbDashboardCreateForm extends LitElement {
     protected createDashboard() {
 
         if (this.dashboard.displayName.length > 0) {
-            console.log("Hi!")
-            createNewDashboard(this.dashboard).then((dashboard) => {
-                console.log(dashboard);
+            const tbClient = new ToolboardClient({ BASE: 'http://localhost:8080/api/v1' });
+            tbClient.dashboard.postDashboard(this.dashboard as any).then((dashboard: any) => {
                 this.dispatchEvent(new CustomEvent('create'))
-            }).catch((e) => {
+            }).catch((e: any) => {
                 console.error(e);
             }).finally(() => {
                 this.closeDialog();

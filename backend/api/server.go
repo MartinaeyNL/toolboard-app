@@ -7,34 +7,31 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"toolboard/backend/api/endpoints"
+	"toolboard/docs"
 	_ "toolboard/docs"
 )
-
-//	@title			Toolboard API
-//	@version		1.0
-
-//	@contact.name	Toolboard GitHub
-//	@contact.url	https://github.com/MartinaeyNL/toolboard-app
-
-//	@license.name	Apache 2.0
-//	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
-
-//	@host		localhost:8080
-//	@BasePath	/api/v1
 
 func Run() {
 
 	fmt.Println("Starting up the REST API!")
 
+	docs.SwaggerInfo.Title = "Toolboard API"
+	docs.SwaggerInfo.Version = "1.0"
+	docs.SwaggerInfo.Host = "localhost:8080"
+	docs.SwaggerInfo.BasePath = "/api/v1"
+
 	// Create a new Gin router
 	router := gin.New()
-	getRoutes(router)
 
+	// Apply middleware such as CORS
 	router.Use(cors.New(cors.Config{
-		AllowAllOrigins:  true,
-		AllowHeaders:     []string{"Content-Type", "Content-Length", "accept", "origin"},
-		AllowCredentials: false,
+		AllowOrigins: []string{"http://localhost:34115"},
+		AllowMethods: []string{"GET", "POST", "PUT", "DELETE"},
+		AllowHeaders: []string{"Content-Type", "Content-Length", "accept", "origin"},
 	}))
+
+	// Register the routes with linked methods
+	getRoutes(router)
 
 	// Run the router
 	runErr := router.Run()
@@ -49,7 +46,7 @@ func getRoutes(router *gin.Engine) []*gin.RouterGroup {
 	{
 		dashboardRoutes := apiRoutes.Group("/dashboard")
 		{
-			dashboardRoutes.GET("", endpoints.GetDashboard)
+			dashboardRoutes.GET("/all", endpoints.GetAllDashboards)
 			dashboardRoutes.POST("", endpoints.PostDashboard)
 		}
 		userRoutes := apiRoutes.Group("/user")

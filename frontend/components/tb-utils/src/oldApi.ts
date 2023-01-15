@@ -1,6 +1,6 @@
 import {Dashboard} from "./models";
 
-export async function createNewDashboard(dashboard: Dashboard): Promise<any> {
+export async function createOldDashboard(dashboard: Dashboard): Promise<any> {
     console.log("Creating dashboard..")
 
     try {

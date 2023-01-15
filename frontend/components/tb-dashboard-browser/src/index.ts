@@ -3,8 +3,10 @@ import {customElement, property, state} from "lit/decorators.js";
 import {classMap} from 'lit/directives/class-map.js';
 import {map} from 'lit/directives/map.js';
 import {when} from 'lit/directives/when.js';
+import {until} from 'lit/directives/until.js';
 import {globalStyle, Dashboard} from "@toolboard/tb-utils";
 import "@toolboard/tb-dashboard-createform";
+import {ToolboardClient} from "@toolboard/tb-api";
 
 //language=css
 const styling = css`
@@ -54,11 +56,56 @@ export class TbDashboardBrowser extends LitElement {
     @state()
     private selectedDashboard?: Dashboard;
 
+    private dashboardsTemplate: () => Promise<TemplateResult>
+
     constructor() {
         super();
+        const tbClient = new ToolboardClient({ BASE: 'http://localhost:8080/api/v1' });
+        this.dashboardsTemplate = async () => {
+            const dashboards: Dashboard[] = (await tbClient.dashboard.getDashboardAll() as any);
+            console.log(dashboards);
+            return html`
+                ${map(dashboards, (dashboard) => {
+                    const itemClassMap = {
+                        "item-area": this.selectedDashboard?.id != dashboard.id,
+                        "item-area--selected": this.selectedDashboard?.id == dashboard.id
+                    }
+                    return html`
+                        <div class="${classMap(itemClassMap)}" @click="${() => this.selectDashboard(dashboard)}"
+                             style="width: 100%;">
+                            <div id="item-container" class="container" style="flex-direction: row; padding: 18px;">
+                                <div>
+                                    <sl-icon-button name="columns-gap" label="My dashboards"
+                                                    style="font-size: 2rem;"></sl-icon-button>
+                                </div>
+                                <div class="container" style="align-items: start; gap: 6px; padding: 0; flex: 1;">
+                                    <div class="container"
+                                         style="flex-direction: row; justify-content: space-between; width: 100%; padding: 0;">
+                                        <span style="font-size: var(--sl-font-size-large)">${dashboard.displayName}</span>
+                                        <div style="opacity: 0.8;">
+                                            <sl-badge variant="primary">Primary</sl-badge>
+                                            <sl-badge variant="success">Util</sl-badge>
+                                        </div>
+                                    </div>
+                                    <div class="container"
+                                         style="flex-direction: row; justify-content: start; padding: 0; font-size: var(--sl-font-size-small); opacity: 0.5;">
+                                        <span>Includes:</span>
+                                        <div>
+                                            <span>Twitch Chat,</span>
+                                            <span>OBS Stats Panel,</span>
+                                            <span>Spotify Play Bar</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                })}
+            `
+        }
         this.dashboards = [
-            { id: 1, createdAt: Date.now(), updatedAt: Date.now(), deletedAt: { Time: Date.now(), Valid: false }, displayName: "Dashboard 1", description: "The first dashboard on the list" },
-            { id: 2, createdAt: Date.now(), updatedAt: Date.now(), deletedAt: { Time: Date.now(), Valid: false }, displayName: "Dashboard 2", description: "Another dashboard to play with" }
+            { id: 1, createdAt: Date.now(), updatedAt: Date.now(), displayName: "Dashboard 1", description: "The first dashboard on the list" },
+            { id: 2, createdAt: Date.now(), updatedAt: Date.now(), displayName: "Dashboard 2", description: "Another dashboard to play with" }
         ]
     }
 
@@ -95,38 +142,7 @@ export class TbDashboardBrowser extends LitElement {
                                 <!-- List of dashboards -->
                                 <div slot="start" id="dashboards-panel" class="container" style="align-items: start; padding: 0 24px 0 0; display: flex; flex-direction: row;">
                                     <div class="container" style="flex: 1; padding: 0;">
-                                        ${map(this.dashboards, (dashboard) => {
-                                            const itemClassMap = {
-                                                "item-area": this.selectedDashboard?.id != dashboard.id,
-                                                "item-area--selected": this.selectedDashboard?.id == dashboard.id
-                                            }
-                                            return html`
-                                                <div class="${classMap(itemClassMap)}" @click="${() => this.selectDashboard(dashboard)}" style="width: 100%;">
-                                                    <div id="item-container" class="container" style="flex-direction: row; padding: 18px;">
-                                                        <div>
-                                                            <sl-icon-button name="columns-gap" label="My dashboards" style="font-size: 2rem;"></sl-icon-button>
-                                                        </div>
-                                                        <div class="container" style="align-items: start; gap: 6px; padding: 0; flex: 1;">
-                                                            <div class="container" style="flex-direction: row; justify-content: space-between; width: 100%; padding: 0;">
-                                                                <span style="font-size: var(--sl-font-size-large)">${dashboard.displayName}</span>
-                                                                <div style="opacity: 0.8;">
-                                                                    <sl-badge variant="primary">Primary</sl-badge>
-                                                                    <sl-badge variant="success">Util</sl-badge>
-                                                                </div>
-                                                            </div>
-                                                            <div class="container" style="flex-direction: row; justify-content: start; padding: 0; font-size: var(--sl-font-size-small); opacity: 0.5;">
-                                                                <span>Includes:</span>
-                                                                <div>
-                                                                    <span>Twitch Chat,</span>
-                                                                    <span>OBS Stats Panel,</span>
-                                                                    <span>Spotify Play Bar</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            `;
-                                        })}
+                                        ${until(this.dashboardsTemplate(), html`Loading..`)}
                                     </div>
                                 </div>
 

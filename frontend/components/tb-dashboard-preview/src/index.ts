@@ -34,10 +34,6 @@ export class TbDashboardPreview extends LitElement {
                 id: 1,
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
-                deletedAt: {
-                    Time: Date.now(),
-                    Valid: false
-                },
                 dashboardId: 1,
                 WidgetId: 1,
                 LocationId: 1,
@@ -46,10 +42,6 @@ export class TbDashboardPreview extends LitElement {
                     id: 1,
                     createdAt: Date.now(),
                     updatedAt: Date.now(),
-                    deletedAt: {
-                        Time: Date.now(),
-                        Valid: false
-                    },
                     x: 2,
                     y: 2,
                     width: 5,
@@ -59,10 +51,6 @@ export class TbDashboardPreview extends LitElement {
                     id: 1,
                     createdAt: Date.now(),
                     updatedAt: Date.now(),
-                    deletedAt: {
-                        Time: Date.now(),
-                        Valid: false
-                    },
                     displayName: "Special Widget created by MartinaeyNL",
                     author: "MartinaeyNL",
                     htmlContent: "<span>Text of the Custom Widget 1 widget. Right?</span>"

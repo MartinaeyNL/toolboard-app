@@ -9,14 +9,16 @@
   },
   "types": "lib/index.d.ts",
   "scripts": {
-    "dev": "tsc-watch --noClear",
-    "build": "tsc"
+    "dev": "tsc-watch --noClear --silent",
+    "build": "rimraf lib/ && tsc"
   },
   "dependencies": {
-    "@toolboard/tb-utils": "^1.0.0",
+    "@toolboard/tb-api": "1.0.0",
+    "@toolboard/tb-utils": "1.0.0",
     "lit": "^2.2.8"
   },
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "tsc-watch": "^6.0.0",
     "typescript": "^4.6.4"
   }
