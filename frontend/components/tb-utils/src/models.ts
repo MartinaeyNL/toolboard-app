@@ -2,7 +2,9 @@
 
 
 export interface DashboardWidgetLocation {
-    id: string;
+    id: number;
+    createdAt?: Time;
+    updatedAt?: Time;
     x: number;
     y: number;
     width: number;
@@ -13,22 +15,32 @@ export interface DashboardWidgetLocation {
     maxHeight?: number;
 }
 export interface Widget {
-    id: string;
+    id?: number;
+    createdAt: Time;
+    updatedAt: Time;
     displayName: string;
     author: string;
     htmlContent: string;
 }
 export interface DashboardWidget {
-    id: string;
-    version: number;
+    id: number;
+    createdAt?: Time;
+    updatedAt?: Time;
+    dashboardId: number;
     displayName: string;
     description?: string;
     widget: Widget;
     location: DashboardWidgetLocation;
+    WidgetId: number;
+    LocationId: number;
+}
+export interface Time {
+
 }
 export interface Dashboard {
-    id: string;
-    version: number;
+    id: number;
+    createdAt?: Time;
+    updatedAt?: Time;
     displayName: string;
     description?: string;
     widgets?: DashboardWidget[];

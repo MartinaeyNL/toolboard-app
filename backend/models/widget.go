@@ -1,8 +1,15 @@
 package models
 
+import (
+	"time"
+)
+
+// Widget backend
 type Widget struct {
-	Id          string `json:"id"`
-	DisplayName string `json:"displayName"`
-	Author      string `json:"author"`
-	HTMLContent string `json:"htmlContent"`
+	ID          uint      `json:"id,omitempty" gorm:"primarykey"`
+	CreatedAt   time.Time `json:"createdAt"`
+	UpdatedAt   time.Time `json:"updatedAt"`
+	DisplayName string    `json:"displayName"`
+	Author      string    `json:"author"`
+	HTMLContent string    `json:"htmlContent"`
 }

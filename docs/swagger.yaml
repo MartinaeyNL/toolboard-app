@@ -1,0 +1,137 @@
+definitions:
+  models.Dashboard:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      displayName:
+        type: string
+      id:
+        type: integer
+      updatedAt:
+        type: string
+      widgets:
+        items:
+          $ref: '#/definitions/models.DashboardWidget'
+        type: array
+    type: object
+  models.DashboardWidget:
+    properties:
+      createdAt:
+        type: string
+      dashboardId:
+        type: integer
+      description:
+        type: string
+      displayName:
+        type: string
+      id:
+        type: integer
+      location:
+        $ref: '#/definitions/models.DashboardWidgetLocation'
+      locationId:
+        type: integer
+      updatedAt:
+        type: string
+      widget:
+        $ref: '#/definitions/models.Widget'
+      widgetId:
+        type: integer
+    type: object
+  models.DashboardWidgetLocation:
+    properties:
+      MaxWidth:
+        type: integer
+      createdAt:
+        type: string
+      height:
+        type: integer
+      id:
+        type: integer
+      maxHeight:
+        type: integer
+      minHeight:
+        type: integer
+      minWidth:
+        type: integer
+      updatedAt:
+        type: string
+      width:
+        type: integer
+      x:
+        type: integer
+      "y":
+        type: integer
+    type: object
+  models.Widget:
+    properties:
+      author:
+        type: string
+      createdAt:
+        type: string
+      displayName:
+        type: string
+      htmlContent:
+        type: string
+      id:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /dashboard:
+    post:
+      consumes:
+      - application/json
+      description: Stores the body dashboard object as a new entry in the database
+      operationId: post-dashboard
+      parameters:
+      - description: The dashboard to create
+        in: body
+        name: dashboard
+        required: true
+        schema:
+          $ref: '#/definitions/models.Dashboard'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Dashboard'
+        "400":
+          description: ok
+          schema:
+            type: string
+        "500":
+          description: ok
+          schema:
+            type: string
+      summary: Create a new Dashboard
+      tags:
+      - dashboard
+  /dashboard/all:
+    get:
+      consumes:
+      - application/json
+      description: Returns one json object with all dashboards in the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Dashboard'
+            type: array
+        "500":
+          description: ok
+          schema:
+            type: string
+      summary: Get all dashboards
+      tags:
+      - dashboard
+swagger: "2.0"

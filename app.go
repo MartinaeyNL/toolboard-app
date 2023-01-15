@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"toolboard/backend/api"
+	"toolboard/backend/database"
 )
 
 // App struct
@@ -21,7 +22,10 @@ func NewApp() *App {
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 
-	fmt.Println("Starting the Backend Server..")
+	fmt.Println("Initializing the database..")
+	database.Init(ctx)
+
+	fmt.Println("Starting the Backend API..")
 	api.Run()
 }
 

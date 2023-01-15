@@ -4,10 +4,13 @@
   "outputfilename": "toolboard",
   "frontend:dir": "frontend",
   "frontend:install": "yarn install",
-  "frontend:build": "go run ./../util/tsCompiler.go && yarn workspaces foreach -i -v run build",
-  "frontend:dev:watcher": "yarn workspaces foreach -i -v -p run dev",
+  "frontend:build": "yarn workspaces foreach -i -v -t -j unlimited run build",
+  "frontend:dev:watcher": "yarn workspaces foreach -i -v -p -j unlimited run dev",
   "frontend:dev:serverUrl": "http://localhost:5173",
   "wailsjsdir": "frontend/desktop",
+  "preBuildHooks": {
+    "*/*": "go run ./../../util/setup.go"
+  },
   "author": {
     "name": "MartinaeyNL",
     "email": "business@martinaey.nl"
