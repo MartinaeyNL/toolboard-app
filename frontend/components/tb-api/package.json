@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@toolboard/tb-utils": "1.0.0",
-    "lit": "^2.2.8"
+    "lit": "^2.6.1"
   },
   "devDependencies": {
     "openapi-typescript-codegen": "^0.23.0",
