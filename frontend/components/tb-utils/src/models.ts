@@ -16,8 +16,8 @@ export interface DashboardWidgetLocation {
 }
 export interface Widget {
     id?: number;
-    createdAt: Time;
-    updatedAt: Time;
+    createdAt?: Time;
+    updatedAt?: Time;
     displayName: string;
     author: string;
     htmlContent: string;

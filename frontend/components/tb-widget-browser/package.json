@@ -1,5 +1,5 @@
 {
-  "name": "@toolboard/tb-dashboard-browser",
+  "name": "@toolboard/tb-widget-browser",
   "version": "1.0.0",
   "main": "dist/umd/index.bundle.js",
   "module": "lib/index.js",
@@ -13,7 +13,6 @@
     "build": "rimraf lib/ && tsc"
   },
   "dependencies": {
-    "@toolboard/tb-dashboard-createform": "1.0.0",
     "@toolboard/tb-utils": "1.0.0",
     "lit": "^2.2.8"
   },

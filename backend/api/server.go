@@ -48,6 +48,7 @@ func getRoutes(router *gin.Engine) []*gin.RouterGroup {
 		{
 			dashboardRoutes.GET("/all", endpoints.GetAllDashboards)
 			dashboardRoutes.POST("", endpoints.PostDashboard)
+			dashboardRoutes.DELETE("/:id", endpoints.DeleteDashboard)
 		}
 		userRoutes := apiRoutes.Group("/user")
 		{

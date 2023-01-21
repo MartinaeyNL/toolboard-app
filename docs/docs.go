@@ -49,16 +49,10 @@ const docTemplate = `{
                         }
                     },
                     "400": {
-                        "description": "ok",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "description": "Bad Request"
                     },
                     "500": {
-                        "description": "ok",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "description": "Internal Server Error"
                     }
                 }
             }
@@ -87,10 +81,34 @@ const docTemplate = `{
                         }
                     },
                     "500": {
-                        "description": "ok",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/dashboard/{id}": {
+            "delete": {
+                "description": "Checks the ID in the database, and deletes that entry if present",
+                "tags": [
+                    "dashboard"
+                ],
+                "summary": "Delete a dashboard",
+                "operationId": "delete-dashboard",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Dashboard ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
                     }
                 }
             }
