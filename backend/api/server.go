@@ -54,6 +54,12 @@ func getRoutes(router *gin.Engine) []*gin.RouterGroup {
 		{
 			userRoutes.GET("", nil)
 		}
+		widgetRoutes := apiRoutes.Group("/widget")
+		{
+			widgetRoutes.GET("/all", endpoints.GetAllWidgets)
+			widgetRoutes.GET("/:id", endpoints.GetWidget)
+			widgetRoutes.GET("/embed/:id/*file", endpoints.EmbedWidgetHTML)
+		}
 	}
 
 	swaggerRoutes := router.Group("/swagger")

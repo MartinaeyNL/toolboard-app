@@ -3,7 +3,8 @@ import {customElement, property, state} from 'lit/decorators.js';
 import {map} from 'lit/directives/map.js';
 import {when} from 'lit/directives/when.js';
 import {unsafeHTML} from 'lit/directives/unsafe-html.js';
-import {globalStyle, Widget} from "@toolboard/tb-utils";
+import {globalStyle, Widget, WidgetJSON} from "@toolboard/tb-utils";
+import {CancelablePromise, ToolboardClient} from "@toolboard/tb-api";
 
 //language=css
 const styling = css`
@@ -18,15 +19,21 @@ export class TbWidgetBrowser extends LitElement {
     @property()
     protected widgets?: Widget[]
 
+    private getWidgetAllPromise?: CancelablePromise<any>
+
     protected shouldUpdate(_changedProperties: PropertyValues): boolean {
 
         if(!this.widgets) {
-            this.widgets = [
+            this.getWidgetAllPromise = new ToolboardClient({ BASE: 'http://localhost:8080/api/v1'}).widget.getWidgetAll();
+            this.getWidgetAllPromise.then((widgets) => {
+                this.widgets = widgets
+            })
+            /*this.widgets = [
                 { displayName: "Spotify Widget", author: "MartinaeyNL", htmlContent: "<span>Listening to music is nice</span>"},
                 { displayName: "Discord Widget", author: "MartinaeyNL", htmlContent: "<span>Friends are awesome</span>"},
                 { displayName: "OBS Studio Widget", author: "MartinaeyNL", htmlContent: "<span>Streaming is a big passion</span>"},
                 { displayName: "Steam Widget", author: "MartinaeyNL", htmlContent: "<span>Who does not want to play games</span>"}
-            ]
+            ]*/
         }
 
         return super.shouldUpdate(_changedProperties);
@@ -43,6 +50,7 @@ export class TbWidgetBrowser extends LitElement {
                         ${when(this.widgets, () => {
                             return html`
                                 ${map(this.widgets, (widget) => {
+                                    const widgetJSON: WidgetJSON = JSON.parse(widget.widgetJSON)
                                     return html`
                                         <sl-card>
                                             <img
@@ -51,9 +59,8 @@ export class TbWidgetBrowser extends LitElement {
                                                     alt="A kitten sits patiently between a terracotta pot and decorative grasses."
                                             />
 
-                                            <strong>${widget.displayName}</strong><br/>
-                                            ${unsafeHTML(widget.htmlContent)}<br/>
-                                            <small>${widget.author}</small>
+                                            <strong>${widgetJSON.manifest.displayName}</strong><br/>
+                                            <small>${widget.installPath}</small>
 
                                             <div slot="footer">
                                                 <div style="display: flex; justify-content: space-between;">

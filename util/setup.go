@@ -62,7 +62,10 @@ func compileTS(path string) {
 		Add(models.Dashboard{}).WithInterface(true).
 		Add(models.DashboardWidget{}).WithInterface(true).
 		Add(models.DashboardWidgetLocation{}).WithInterface(true).
-		Add(models.Widget{}).WithInterface(true)
+		Add(models.Widget{}).WithInterface(true).
+		Add(models.WidgetJSON{}).WithInterface(true).
+		Add(models.WidgetManifest{}).WithInterface(true).
+		Add(models.WidgetContent{}).WithInterface(true)
 
 	tsErr := tsConverter.ConvertToFile(path + "/models.ts")
 	if tsErr != nil {

@@ -2,7 +2,6 @@
 build/bin
 build/windows/installer
 node_modules
-frontend/desktop/dist
 *.md5
 *.tsbuildinfo
 lib/
@@ -14,5 +13,8 @@ lib/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+/frontend/**/**/.yarn
+/frontend/**/**/dist
 
 *.backup

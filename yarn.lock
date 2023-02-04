@@ -241,6 +241,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@toolboard/tb-widget-container@workspace:frontend/components/tb-widget-container":
+  version: 0.0.0-use.local
+  resolution: "@toolboard/tb-widget-container@workspace:frontend/components/tb-widget-container"
+  dependencies:
+    "@toolboard/tb-utils": 1.0.0
+    lit: ^2.2.8
+    rimraf: ^3.0.2
+    tsc-watch: ^6.0.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@toolboard/tb-widget-editor@workspace:frontend/components/tb-widget-editor":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-widget-editor@workspace:frontend/components/tb-widget-editor"

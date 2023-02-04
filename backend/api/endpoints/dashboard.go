@@ -12,7 +12,6 @@ import (
 //	@Summary		Get all dashboards
 //	@Description	Returns one json object with all dashboards in the database
 //	@Tags			dashboard
-//	@Accept			json
 //	@Produce		json
 //	@Success		200	{object}	[]models.Dashboard
 //	@Failure		500

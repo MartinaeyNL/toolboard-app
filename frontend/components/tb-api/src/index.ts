@@ -15,3 +15,4 @@ export type { models_DashboardWidgetLocation } from './models/models_DashboardWi
 export type { models_Widget } from './models/models_Widget';
 
 export { DashboardService } from './services/DashboardService';
+export { WidgetService } from './services/WidgetService';

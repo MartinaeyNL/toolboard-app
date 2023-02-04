@@ -66,17 +66,11 @@ definitions:
     type: object
   models.Widget:
     properties:
-      author:
-        type: string
-      createdAt:
-        type: string
-      displayName:
-        type: string
-      htmlContent:
-        type: string
       id:
-        type: integer
-      updatedAt:
+        type: string
+      installPath:
+        type: string
+      widgetJSON:
         type: string
     type: object
 info:
@@ -129,8 +123,6 @@ paths:
       - dashboard
   /dashboard/all:
     get:
-      consumes:
-      - application/json
       description: Returns one json object with all dashboards in the database
       produces:
       - application/json
@@ -146,4 +138,73 @@ paths:
       summary: Get all dashboards
       tags:
       - dashboard
+  /widget/{id}:
+    get:
+      description: Returns a json object of the Widget with the smae ID
+      parameters:
+      - description: Widget ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Widget'
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Get widget by ID
+      tags:
+      - widget
+  /widget/all:
+    get:
+      description: Returns one json object with all available widgets
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Widget'
+            type: array
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Get all widgets, locally and externally
+      tags:
+      - widget
+  /widget/embed/{id}/{file}:
+    get:
+      description: Returns html of the Widget with the smae ID
+      parameters:
+      - description: Widget ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Optional file name
+        in: path
+        name: file
+        type: string
+      produces:
+      - text/html
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+        "415":
+          description: Unsupported Media Type
+        "500":
+          description: Internal Server Error
+      summary: Get HTML of a Widget
+      tags:
+      - widget
 swagger: "2.0"

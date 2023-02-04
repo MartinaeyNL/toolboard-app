@@ -32,7 +32,8 @@ func initAppdataFolder(path string) {
 		err1 := os.Mkdir(path+"\\databases", os.ModePerm)
 		err2 := os.Mkdir(path+"\\settings", os.ModePerm)
 		err3 := os.Mkdir(path+"\\logs", os.ModePerm)
-		dirErrors = append(dirErrors, err1, err2, err3)
+		err4 := os.Mkdir(path+"\\widgets", os.ModePerm)
+		dirErrors = append(dirErrors, err1, err2, err3, err4)
 		for _, val := range dirErrors {
 			if val != nil {
 				log.Fatal(val.Error())

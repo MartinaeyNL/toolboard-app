@@ -60,9 +60,6 @@ const docTemplate = `{
         "/dashboard/all": {
             "get": {
                 "description": "Returns one json object with all dashboards in the database",
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
@@ -106,6 +103,111 @@ const docTemplate = `{
                 "responses": {
                     "204": {
                         "description": "No Content"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/widget/all": {
+            "get": {
+                "description": "Returns one json object with all available widgets",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "widget"
+                ],
+                "summary": "Get all widgets, locally and externally",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Widget"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/widget/embed/{id}/{file}": {
+            "get": {
+                "description": "Returns html of the Widget with the smae ID",
+                "produces": [
+                    "text/html"
+                ],
+                "tags": [
+                    "widget"
+                ],
+                "summary": "Get HTML of a Widget",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Widget ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Optional file name",
+                        "name": "file",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/widget/{id}": {
+            "get": {
+                "description": "Returns a json object of the Widget with the smae ID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "widget"
+                ],
+                "summary": "Get widget by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Widget ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Widget"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -217,22 +319,13 @@ const docTemplate = `{
         "models.Widget": {
             "type": "object",
             "properties": {
-                "author": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "displayName": {
-                    "type": "string"
-                },
-                "htmlContent": {
-                    "type": "string"
-                },
                 "id": {
-                    "type": "integer"
+                    "type": "string"
                 },
-                "updatedAt": {
+                "installPath": {
+                    "type": "string"
+                },
+                "widgetJSON": {
                     "type": "string"
                 }
             }
