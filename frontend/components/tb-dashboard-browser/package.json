@@ -13,8 +13,8 @@
     "build": "rimraf lib/ && tsc"
   },
   "dependencies": {
-    "@toolboard/tb-utils": "1.0.0",
     "@toolboard/tb-dashboard-createform": "1.0.0",
+    "@toolboard/tb-utils": "1.0.0",
     "lit": "^2.2.8"
   },
   "devDependencies": {

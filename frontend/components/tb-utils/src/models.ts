@@ -15,12 +15,9 @@ export interface DashboardWidgetLocation {
     maxHeight?: number;
 }
 export interface Widget {
-    id?: number;
-    createdAt: Time;
-    updatedAt: Time;
-    displayName: string;
-    author: string;
-    htmlContent: string;
+    id?: string;
+    installPath: string;
+    widgetJSON: string;
 }
 export interface DashboardWidget {
     id: number;
@@ -46,4 +43,19 @@ export interface Dashboard {
     widgets?: DashboardWidget[];
 }
 
+
+
+export interface WidgetContent {
+    location: string;
+    jsFileName: string;
+    html: string;
+}
+export interface WidgetManifest {
+    displayName: string;
+}
+export interface WidgetJSON {
+    id: string;
+    manifest: WidgetManifest;
+    content: WidgetContent;
+}
 

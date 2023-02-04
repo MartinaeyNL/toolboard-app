@@ -25,8 +25,8 @@ dashboard: models_Dashboard,
             url: '/dashboard',
             body: dashboard,
             errors: {
-                400: `ok`,
-                500: `ok`,
+                400: `Bad Request`,
+                500: `Internal Server Error`,
             },
         });
     }
@@ -42,7 +42,29 @@ dashboard: models_Dashboard,
             method: 'GET',
             url: '/dashboard/all',
             errors: {
-                500: `ok`,
+                500: `Internal Server Error`,
+            },
+        });
+    }
+
+    /**
+     * Delete a dashboard
+     * Checks the ID in the database, and deletes that entry if present
+     * @param id Dashboard ID
+     * @returns void 
+     * @throws ApiError
+     */
+    public deleteDashboard(
+id: number,
+): CancelablePromise<void> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/dashboard/{id}',
+            path: {
+                'id': id,
+            },
+            errors: {
+                500: `Internal Server Error`,
             },
         });
     }

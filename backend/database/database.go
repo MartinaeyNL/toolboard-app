@@ -1,41 +1,41 @@
 package database
 
 import (
-	"context"
-	"github.com/wailsapp/wails/v2/pkg/runtime"
+	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"log"
 	"toolboard/backend/models"
 	"toolboard/backend/storage"
 )
 
 var db *gorm.DB
 
-func Init(ctx context.Context) {
+func Init() {
 
 	dbDriverName := "sqlite3"
 
-	dbPath := storage.GetToolboardFolderPath(ctx)
+	dbPath := storage.GetToolboardFolderPath()
 	if len(dbPath) == 0 {
 		return
 	}
 	dbPath += "\\databases\\dashboard.db"
-	runtime.LogInfo(ctx, "Using ["+dbPath+"] as SQLite database")
+	fmt.Println("Using [" + dbPath + "] as SQLite database")
 
 	dialector := getDialector(dbDriverName, dbPath)
 
-	db = openDatabase(ctx, dialector)
+	db = openDatabase(dialector)
 
-	migrate(ctx)
+	migrate()
 }
 
-func openDatabase(ctx context.Context, dialector gorm.Dialector) *gorm.DB {
+func openDatabase(dialector gorm.Dialector) *gorm.DB {
 
 	db, err := gorm.Open(dialector, &gorm.Config{})
 	if err != nil {
-		runtime.LogFatal(ctx, err.Error())
+		log.Fatal(err.Error())
 	}
 	return db
 }
@@ -54,10 +54,10 @@ func getDialector(driverName string, path string) gorm.Dialector {
 	}
 }
 
-func migrate(ctx context.Context) {
+func migrate() {
 
 	err := db.AutoMigrate(&models.Dashboard{})
 	if err != nil {
-		runtime.LogFatal(ctx, err.Error())
+		log.Fatal(err.Error())
 	}
 }

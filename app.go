@@ -23,7 +23,7 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 
 	fmt.Println("Initializing the database..")
-	database.Init(ctx)
+	database.Init()
 
 	fmt.Println("Starting the Backend API..")
 	api.Run()

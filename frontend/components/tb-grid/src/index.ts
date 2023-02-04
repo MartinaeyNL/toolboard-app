@@ -7,7 +7,7 @@ import {GridStack, GridStackOptions} from 'gridstack';
 
 // @ts-ignore
 import style from 'gridstack/dist/gridstack.min.css';
-import {DashboardWidget} from "@toolboard/tb-utils";
+import {DashboardWidget, WidgetJSON} from "@toolboard/tb-utils";
 
 @customElement("tb-grid")
 export class TbGrid extends LitElement {
@@ -86,13 +86,14 @@ export class TbGrid extends LitElement {
                     return html`
                         <div id="grid" style="flex: 1;">
                             ${map(this.widgets, (widget) => {
+                                const widgetJSON: WidgetJSON = JSON.parse(widget.widget.widgetJSON)
                                 return html`
                                     <div class="grid-stack-item" gs-x="${widget.location.x}" gs-y="${widget.location.y}"
                                          gs-w="${widget.location.width}" gs-h="${widget.location.height}">
                                         <div class="grid-stack-item-content"
                                              style="background: var(--sl-color-background-500)">
-                                            ${when(widget.widget.htmlContent,
-                                                    () => unsafeHTML(widget.widget.htmlContent),
+                                            ${when(widgetJSON.content,
+                                                    () => html`<tb-widget-container .widgetJSON="${widgetJSON}"></tb-widget-container>`,
                                                     () => html`<span>No Content.</span>`
                                             )}
                                         </div>

@@ -48,12 +48,9 @@ export class TbDashboardPreview extends LitElement {
                     height: 3
                 },
                 widget: {
-                    id: 1,
-                    createdAt: Date.now(),
-                    updatedAt: Date.now(),
-                    displayName: "Special Widget created by MartinaeyNL",
-                    author: "MartinaeyNL",
-                    htmlContent: "<span>Text of the Custom Widget 1 widget. Right?</span>"
+                    id: "test",
+                    installPath: "",
+                    widgetJSON: ""
                 }
             }]
         }

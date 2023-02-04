@@ -1,0 +1,11 @@
+{
+  "ID": "mnl-test-widget",
+  "Manifest": {
+    "DisplayName": "MartinaeyNL Testing Widget"
+  },
+  "Content": {
+    "Location": "/dist/index.html",
+    "JsFileName": "main.js",
+    "HTML": "<mnl-test-widget></mnl-test-widget>"
+  }
+}
