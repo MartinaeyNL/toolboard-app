@@ -137,6 +137,7 @@ __metadata:
   dependencies:
     "@toolboard/tb-utils": 1.0.0
     lit: ^2.2.8
+    openapi-typescript-codegen: ^0.23.0
     rimraf: ^3.0.2
     typescript: ^4.6.4
   languageName: unknown
@@ -146,6 +147,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-browser@workspace:frontend/components/tb-dashboard-browser"
   dependencies:
+    "@toolboard/tb-dashboard-createform": 1.0.0
     "@toolboard/tb-utils": 1.0.0
     lit: ^2.2.8
     rimraf: ^3.0.2
@@ -154,7 +156,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform":
+"@toolboard/tb-dashboard-createform@1.0.0, @toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform"
   dependencies:
@@ -172,7 +174,7 @@ __metadata:
   resolution: "@toolboard/tb-dashboard-preview@workspace:frontend/components/tb-dashboard-preview"
   dependencies:
     "@toolboard/tb-utils": 1.0.0
-    gridstack: ^7.1.2
+    gridstack: ^7.2.3
     lit: ^2.2.8
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
@@ -185,7 +187,7 @@ __metadata:
   resolution: "@toolboard/tb-grid@workspace:frontend/components/tb-grid"
   dependencies:
     "@toolboard/tb-utils": 1.0.0
-    gridstack: ^7.1.2
+    gridstack: ^7.2.3
     lit: ^2.2.8
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
@@ -209,7 +211,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-utils@workspace:frontend/components/tb-utils"
   dependencies:
-    openapi-typescript-codegen: ^0.23.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -843,10 +844,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gridstack@npm:^7.1.2":
-  version: 7.1.2
-  resolution: "gridstack@npm:7.1.2"
-  checksum: 3457b64f877dff24206182364992a133f3830dc0178b9cb7a6f6c290f4d6551d1790e614b25c77c08d0cc990d3a9d2f28506a06a349b5bb1cdd9fc69127318f2
+"gridstack@npm:^7.2.3":
+  version: 7.2.3
+  resolution: "gridstack@npm:7.2.3"
+  checksum: 8fe41825671ef66cf644e7a824a209d16c60494c432b363db9a7df5317afd32c2263a86aa959f2a62b65b3e6366b2a3150b79e1153309e79f07c0bf611deb7c5
   languageName: node
   linkType: hard
 
