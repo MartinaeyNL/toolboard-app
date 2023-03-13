@@ -38,19 +38,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/core@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@floating-ui/core@npm:1.0.4"
-  checksum: 6362a625ad0dba7cfd197fc4b6f620eed95147d38684d7347287569897098862c6ba1173f3758d76d22e7739112c57dc836a569c582e78f5807c26ef41df4989
+"@floating-ui/core@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "@floating-ui/core@npm:1.2.3"
+  checksum: dbaff1b454314facc62d3e70955e7ce4f8ccd8530d08b8c508df588ea775674d3d4048de6c1424074f0659f7dc88bbda8ff7a5c8e17e86daa5fad34e40c7f7d3
   languageName: node
   linkType: hard
 
-"@floating-ui/dom@npm:^1.0.7":
-  version: 1.0.12
-  resolution: "@floating-ui/dom@npm:1.0.12"
+"@floating-ui/dom@npm:^1.2.1":
+  version: 1.2.4
+  resolution: "@floating-ui/dom@npm:1.2.4"
   dependencies:
-    "@floating-ui/core": ^1.0.4
-  checksum: fbcdec5fb8d096a65da346e76fc6c8f2e4db3c9c70b06dea17321c775bc125ae0b02450a8b195a224b8edf9acba205b607f6d638bda78a2ca1b2ec92fa15b784
+    "@floating-ui/core": ^1.2.3
+  checksum: 5c24a2e8f04e436390646c8a4431c6cb79e03711fbb0f818b87d613a6be8971bc560a830b702aaa51a0ebc4d0c45deb06f3140c14125dc1ac770365bf66ee903
   languageName: node
   linkType: hard
 
@@ -68,10 +68,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lit-labs/react@npm:^1.1.0":
+"@lit-labs/react@npm:^1.1.1":
   version: 1.1.1
   resolution: "@lit-labs/react@npm:1.1.1"
   checksum: e46b87a3e04b329b62e67360a7a1b21c55abf91c17d3059b550654565b53c73a25832e95426698e9b78488cc4ebaeb20b8a8ca64a220325e31633355a245710d
+  languageName: node
+  linkType: hard
+
+"@lit-labs/ssr-dom-shim@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@lit-labs/ssr-dom-shim@npm:1.0.0"
+  checksum: ccba6675ad631c6f7360af4e12e328e88d877a52ec992ae9254a1be9902ef699b7916d851b073803dd91244d0f709de2c0539a7db643889cfe341ff6e1a74eb5
   languageName: node
   linkType: hard
 
@@ -79,6 +86,15 @@ __metadata:
   version: 1.5.0
   resolution: "@lit/reactive-element@npm:1.5.0"
   checksum: 8f87a2d9d7630c26ad0dd6b9a8ad46bb184fcec11e04ded3d487859a6cfebbe871d07a8271dfdf3f2d4b9688d27c17de0f8fa3fc690602f5b86d742f969a3ca4
+  languageName: node
+  linkType: hard
+
+"@lit/reactive-element@npm:^1.6.0":
+  version: 1.6.1
+  resolution: "@lit/reactive-element@npm:1.6.1"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": ^1.0.0
+  checksum: fab0bcfdade9c26af2ad5115fb564bcf8ba0732a3a8be86c157851c2771e3fdc65ab38f2cd60fa121946058bf6e487461fd217f87b01f96e88ee7a95d5d866ba
   languageName: node
   linkType: hard
 
@@ -109,25 +125,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@shoelace-style/localize@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "@shoelace-style/localize@npm:3.0.3"
-  checksum: e666f4d832ea9836abf93d160296b15de4cbc12afc34e6caafe4a1a5919482e1cb785e0a39b5742afdcc84ee288e8d25b4232b5d3a1dc001dfa6838e68e5d1ee
+"@shoelace-style/localize@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@shoelace-style/localize@npm:3.1.0"
+  checksum: 531c516d9366c00ed221f01c6b754ec3514e552f99760863840cbee9666f3731e16b0fc56a3a27e4022e45d0b089d8c7fa058af5e663b79dd53f4dd8a1a14a32
   languageName: node
   linkType: hard
 
-"@shoelace-style/shoelace@npm:^2.0.0-beta.87":
-  version: 2.0.0-beta.87
-  resolution: "@shoelace-style/shoelace@npm:2.0.0-beta.87"
+"@shoelace-style/shoelace@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@shoelace-style/shoelace@npm:2.3.0"
   dependencies:
     "@ctrl/tinycolor": ^3.5.0
-    "@floating-ui/dom": ^1.0.7
-    "@lit-labs/react": ^1.1.0
+    "@floating-ui/dom": ^1.2.1
+    "@lit-labs/react": ^1.1.1
     "@shoelace-style/animations": ^1.1.0
-    "@shoelace-style/localize": ^3.0.3
-    lit: ^2.4.1
+    "@shoelace-style/localize": ^3.1.0
+    composed-offset-position: ^0.0.4
+    lit: ^2.6.1
     qr-creator: ^1.0.0
-  checksum: 9a835045ce884ec43e4c612122dcbb9f538e056ff356abd5a32b25bc855d41effac503355cbf9a31d75fb27bedf4e8929366d8a3982b38b4393982da9eb73712
+  checksum: 8dccf05ccc964e5e2b6facd021d98704cae2889436617e751e9f63d6411886a519d5e158caa0950dfcb899c6624ae2c1f22f5b5d00f2dcf502f0ded2f8419e83
   languageName: node
   linkType: hard
 
@@ -137,6 +154,7 @@ __metadata:
   dependencies:
     "@toolboard/tb-utils": 1.0.0
     lit: ^2.2.8
+    openapi-typescript-codegen: ^0.23.0
     rimraf: ^3.0.2
     typescript: ^4.6.4
   languageName: unknown
@@ -146,6 +164,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-browser@workspace:frontend/components/tb-dashboard-browser"
   dependencies:
+    "@toolboard/tb-dashboard-createform": 1.0.0
     "@toolboard/tb-utils": 1.0.0
     lit: ^2.2.8
     rimraf: ^3.0.2
@@ -154,7 +173,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform":
+"@toolboard/tb-dashboard-createform@1.0.0, @toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform"
   dependencies:
@@ -209,7 +228,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-utils@workspace:frontend/components/tb-utils"
   dependencies:
-    openapi-typescript-codegen: ^0.23.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -398,6 +416,13 @@ __metadata:
   version: 9.4.1
   resolution: "commander@npm:9.4.1"
   checksum: bfb18e325a5bdf772763c2213d5c7d9e77144d944124e988bcd8e5e65fb6d45d5d4e86b09155d0f2556c9a59c31e428720e57968bcd050b2306e910a0bf3cf13
+  languageName: node
+  linkType: hard
+
+"composed-offset-position@npm:^0.0.4":
+  version: 0.0.4
+  resolution: "composed-offset-position@npm:0.0.4"
+  checksum: a95ce7604025cbc1e37d3a836198bcad1b1c66620a480dac373afa1c801f128ca65f108f89548fa81d1d8daf873f1f1bc49f1d74a1784a28768beca15454b0a6
   languageName: node
   linkType: hard
 
@@ -732,7 +757,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend@workspace:frontend/desktop"
   dependencies:
-    "@shoelace-style/shoelace": ^2.0.0-beta.87
+    "@shoelace-style/shoelace": ^2.3.0
     "@toolboard/tb-utils": 1.0.0
     lit: ^2.2.8
     typescript: ^4.6.4
@@ -1057,7 +1082,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit@npm:^2.2.8, lit@npm:^2.4.1":
+"lit-html@npm:^2.6.0":
+  version: 2.6.1
+  resolution: "lit-html@npm:2.6.1"
+  dependencies:
+    "@types/trusted-types": ^2.0.2
+  checksum: 32291eb5bcaa7fcc1d433522a9a62c3c3d240e49bb8c57ccea5c10014823d94f62f17e2d5361781cb6ee0b3c9078ef839de6164d5374371d650471904515e48e
+  languageName: node
+  linkType: hard
+
+"lit@npm:^2.2.8":
   version: 2.5.0
   resolution: "lit@npm:2.5.0"
   dependencies:
@@ -1065,6 +1099,17 @@ __metadata:
     lit-element: ^3.2.0
     lit-html: ^2.5.0
   checksum: 7f62ef9da4b21d37f8b476d8425903a22ed9c1e5b26597c811cb38760d28baf6cd83865457c971d1ac77d6ad59ecc73cd1870fa3478a08d0beffa0b74b016bec
+  languageName: node
+  linkType: hard
+
+"lit@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "lit@npm:2.6.1"
+  dependencies:
+    "@lit/reactive-element": ^1.6.0
+    lit-element: ^3.2.0
+    lit-html: ^2.6.0
+  checksum: 74f2813152a48f195784f01b6b4ff7e4e7d8fa90ac272b725d1953fa3e1d6c9dca60b77da435f34144fcdd38705480889a8ea986835676932a8559c897cea517
   languageName: node
   linkType: hard
 
