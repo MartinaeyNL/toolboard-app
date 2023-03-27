@@ -75,10 +75,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lit-labs/ssr-dom-shim@npm:^1.0.0, @lit-labs/ssr-dom-shim@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@lit-labs/ssr-dom-shim@npm:1.1.0"
+  checksum: 7d6f2331418164ee65816db0670b0a958572c6b91c95e3b41bc1874c6f1465febbe8ac88d4f8367d69fbaba44820d7b255c5e384beab61fa7ee4135d1694b603
+  languageName: node
+  linkType: hard
+
 "@lit/reactive-element@npm:^1.3.0, @lit/reactive-element@npm:^1.5.0":
   version: 1.5.0
   resolution: "@lit/reactive-element@npm:1.5.0"
   checksum: 8f87a2d9d7630c26ad0dd6b9a8ad46bb184fcec11e04ded3d487859a6cfebbe871d07a8271dfdf3f2d4b9688d27c17de0f8fa3fc690602f5b86d742f969a3ca4
+  languageName: node
+  linkType: hard
+
+"@lit/reactive-element@npm:^1.6.0":
+  version: 1.6.1
+  resolution: "@lit/reactive-element@npm:1.6.1"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": ^1.0.0
+  checksum: fab0bcfdade9c26af2ad5115fb564bcf8ba0732a3a8be86c157851c2771e3fdc65ab38f2cd60fa121946058bf6e487461fd217f87b01f96e88ee7a95d5d866ba
   languageName: node
   linkType: hard
 
@@ -136,7 +152,8 @@ __metadata:
   resolution: "@toolboard/tb-api@workspace:frontend/components/tb-api"
   dependencies:
     "@toolboard/tb-utils": 1.0.0
-    lit: ^2.2.8
+    lit: ^2.7.0
+    openapi-typescript-codegen: ^0.23.0
     rimraf: ^3.0.2
     typescript: ^4.6.4
   languageName: unknown
@@ -146,21 +163,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-browser@workspace:frontend/components/tb-dashboard-browser"
   dependencies:
+    "@toolboard/tb-dashboard-createform": 1.0.0
     "@toolboard/tb-utils": 1.0.0
-    lit: ^2.2.8
+    lit: ^2.7.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
-"@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform":
+"@toolboard/tb-dashboard-createform@1.0.0, @toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform":
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-dashboard-createform@workspace:frontend/components/tb-dashboard-createform"
   dependencies:
     "@toolboard/tb-api": 1.0.0
     "@toolboard/tb-utils": 1.0.0
-    lit: ^2.2.8
+    lit: ^2.7.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -173,7 +191,7 @@ __metadata:
   dependencies:
     "@toolboard/tb-utils": 1.0.0
     gridstack: ^7.1.2
-    lit: ^2.2.8
+    lit: ^2.7.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -186,7 +204,7 @@ __metadata:
   dependencies:
     "@toolboard/tb-utils": 1.0.0
     gridstack: ^7.1.2
-    lit: ^2.2.8
+    lit: ^2.7.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -198,7 +216,7 @@ __metadata:
   resolution: "@toolboard/tb-menu@workspace:frontend/components/tb-menu"
   dependencies:
     "@toolboard/tb-utils": 1.0.0
-    lit: ^2.2.8
+    lit: ^2.7.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -209,7 +227,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@toolboard/tb-utils@workspace:frontend/components/tb-utils"
   dependencies:
-    openapi-typescript-codegen: ^0.23.0
     rimraf: ^3.0.2
     tsc-watch: ^6.0.0
     typescript: ^4.6.4
@@ -734,7 +751,7 @@ __metadata:
   dependencies:
     "@shoelace-style/shoelace": ^2.0.0-beta.87
     "@toolboard/tb-utils": 1.0.0
-    lit: ^2.2.8
+    lit: ^2.7.0
     typescript: ^4.6.4
     vite: ^3.0.7
   languageName: unknown
@@ -1048,6 +1065,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lit-element@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "lit-element@npm:3.3.0"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": ^1.1.0
+    "@lit/reactive-element": ^1.3.0
+    lit-html: ^2.7.0
+  checksum: 5a483c34dd55412599978e02858d841a932199dedca0b86ec54639096bc36c301f57915c0ee0463d8a57ac265d57f3468c8378224816c732c73df641a2549d62
+  languageName: node
+  linkType: hard
+
 "lit-html@npm:^2.2.0, lit-html@npm:^2.5.0":
   version: 2.5.0
   resolution: "lit-html@npm:2.5.0"
@@ -1057,7 +1085,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit@npm:^2.2.8, lit@npm:^2.4.1":
+"lit-html@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "lit-html@npm:2.7.0"
+  dependencies:
+    "@types/trusted-types": ^2.0.2
+  checksum: 8a0f83c0f6110f8d02484803c2b309c6d21011bd03681cb790c5303e4a6e4f94956cb2dcb05e67f6c4066f382193a7e5c8987ab0ca244f2fe6e85b99e2feecdd
+  languageName: node
+  linkType: hard
+
+"lit@npm:^2.4.1":
   version: 2.5.0
   resolution: "lit@npm:2.5.0"
   dependencies:
@@ -1065,6 +1102,17 @@ __metadata:
     lit-element: ^3.2.0
     lit-html: ^2.5.0
   checksum: 7f62ef9da4b21d37f8b476d8425903a22ed9c1e5b26597c811cb38760d28baf6cd83865457c971d1ac77d6ad59ecc73cd1870fa3478a08d0beffa0b74b016bec
+  languageName: node
+  linkType: hard
+
+"lit@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "lit@npm:2.7.0"
+  dependencies:
+    "@lit/reactive-element": ^1.6.0
+    lit-element: ^3.3.0
+    lit-html: ^2.7.0
+  checksum: 916f459ded2e9700fe695070963dcb2edcea2dd1d127db6885cf10e94766d5ca9f438ebf659dca264c6402708254927b0ffed6595b6bcaac422e6f203dbbf6ee
   languageName: node
   linkType: hard
 
